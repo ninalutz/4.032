@@ -6,7 +6,7 @@ var z = -250;
 var r = 0;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
   frameRate(1);
@@ -25,15 +25,16 @@ function draw() {
   
 
   noFill();
-  stroke(0, second()/60*255, 0);  
+  stroke(minute()*2, second()/60*255, 255-second()/60*255);  
   translate(width/2, height/2,z);
   rotate(r);
   
-  rect(1, 1, minute()*2, minute()*2);
+ // rect(1, 1, minute()*2, minute()*2);
+ rect(1, 1, 5*second(), 5*second())
   r+=1;
   z=z+1;
   
-
+  
 }
 
 
@@ -51,3 +52,5 @@ function twelveHour() {
 function hoursMinutes() {
   return nf(twelveHour(), 2) + ':' + nf(minute(), 2);
 }
+
+
