@@ -23,7 +23,7 @@ var S = 2;
 var T = 2;
 
 function setup() {
-  createCanvas(800, 700);
+  createCanvas(1000, 700);
   textAlign(CENTER, CENTER);
   var i;
     for (i = 0; i < 60; i++) {
@@ -61,7 +61,7 @@ function draw() {
   noFill();
   
   translate(width/2, height/5, 20);
-  
+
   for (var i = 0; i < second(); i++) {
       ringYsec[i] += 0.2 * (second() - i) * (second()*5 - ringYsec[i]) / second();
       drawRing(ringXsec[i], ringYsec[i]+25, R * ringOrderSec[i], +S * ringOrderSec[i], T);
@@ -76,24 +76,29 @@ function draw() {
   
   for(var i = 0; i<minute(); i++){
       ringYmin[i]  += 0.2 * (minute() - i) * (minute()*5 - ringYmin[i]) / minute();
-      drawRing(ringXmin[i], ringYmin[i]+25, (R)*ringOrderMin[i], S*ringOrderMin[i], T);
+      drawRing(ringXmin[i], ringYmin[i]+25, (R+2)*ringOrderMin[i], (S+2)*ringOrderMin[i], T+2);
   }
   
   for(var i = minute()-1; i>= 0; i--){
-    drawRing(ringXmin[i], ringYmin[i]+25, R * ringOrderMin[i], -S * ringOrderMin[i], T);
+    drawRing(ringXmin[i], ringYmin[i]+25, (R+2) * ringOrderMin[i], -(S+2) * ringOrderMin[i], T+2);
   }
+  
+    translate(0, height/3, 20);
+    for(var i = 1; i<hour()%12; i++){
+      ringYmin[i]  += 0.2 * (i - i) * (i*5 - ringYmin[i]) / i;
+      drawRing(ringXmin[i], ringYmin[i]+25, (R + 5)*ringOrderMin[i], (S+5)*ringOrderMin[i], T+5);
+  }
+  
+  for(var i = hour()%12-1; i>= 0; i--){
+    drawRing(ringXmin[i], ringYmin[i]+25, (R+5) * ringOrderMin[i], -(S+5) * ringOrderMin[i], T+5);
+  }
+  
   
   noFill();
   
   translate(-width/2, 0)
   
-  for(var i = 0; i<hour()%12; i++){
-    xpos = 200;
-    ypos = 220;
-    ellipse(xpos + 20*i, ypos, i*6, i*6);
-    
-  }
-  
+
 }
 
 
