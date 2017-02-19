@@ -2,9 +2,7 @@
 // https://creativecommons.org/licenses/by-nc-sa/4.0
 
 /*
-The original code was written by Ben Fry and his studio. It is in the original.js tab and commented out
-
-I tweaked the code for my class assignment for 4.032 
+I tweaked the code for my class assignment for 4.032
 
 */
 
@@ -18,7 +16,7 @@ function draw() {
   fill(0);
   noStroke();
   ellipseMode(RADIUS);
-  
+
   var textx = width/2;
   var texty = height/2;
 
@@ -35,7 +33,7 @@ function draw() {
   var innerRadius = hourRadius * 0.8;
 
   var millisAngle = map(millis(), 0, 1000, startAngle, stopAngle);
-  fill(255*second()/60, 0, 0, 40)
+  fill(255*second()/60, 40)
   arc(cx, cy, milliRadius, milliRadius, startAngle, millisAngle);
   fill(255);
   ellipse(cx, cy, secondRadius, secondRadius)
@@ -57,7 +55,7 @@ function draw() {
   var i;
   for (i = 1; i< minute(); i++){
     var minuteAngle = map(i, 0, 60, startAngle, stopAngle);
-    fill(i/60 * 255, 0, 0, 10);
+    fill(i/60 * 255, 10);
     arc(cx, cy, minuteRadius, minuteRadius, startAngle, minuteAngle);
   }
   fill(255);
@@ -68,7 +66,7 @@ function draw() {
   arc(cx, cy, hourRadius, hourRadius, startAngle, hourAngle);
   fill(255);
   ellipse(cx, cy, innerRadius, innerRadius);
-  
+
   noStroke();
   fill(0);
   textSize(second()/60 * 40);

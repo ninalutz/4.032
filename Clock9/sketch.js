@@ -18,37 +18,38 @@ var ringYhr = [];
 var ringOrderHr = [];
 
 
-var R = 5;
-var S = 2;
-var T = 2;
+var R = 1.2;
+var S = 1.2;
+var T = 1.2;
 
 function setup() {
-  createCanvas(1000, 700);
+  createCanvas(400, 400);
+
   textAlign(CENTER, CENTER);
   var i;
     for (i = 0; i < 60; i++) {
         ringXsec[i] = 0.5 * width;
-        ringYsec[i] = 0.2 * height;
+        ringYsec[i] = .4*height;
         ringOrderSec[i] = i+1;
-        
+
         ringXmin[i] = .5*width;
         ringYmin[i] = .4*height;
         ringOrderMin[i] = i+1;
-        
+
     }
-    
+
     for(i = 0; i<12; i++){
         ringXhr[i] = .5*width;
         ringYhr[i] = .6*height;
         ringOrderHr = i+1;
-      
+
     }
 }
 
 
 function draw() {
   background(255);
-  
+
   noStroke();
   fill(0);
   textSize(20);
@@ -56,48 +57,51 @@ function draw() {
 
   stroke(0);
   ellipseMode(RADIUS);
+  strokeWeight(.5);
 
-  
+
   noFill();
-  
-  translate(width/2, height/5, 20);
 
-  for (var i = 0; i < second(); i++) {
-      ringYsec[i] += 0.2 * (second() - i) * (second()*5 - ringYsec[i]) / second();
-      drawRing(ringXsec[i], ringYsec[i]+25, R * ringOrderSec[i], +S * ringOrderSec[i], T);
-  }
-  
-    for (var i = second()-1; i >= 0; i--) {
-      drawRing(ringXsec[i], ringYsec[i]+25, R * ringOrderSec[i], -S * ringOrderSec[i], T);
-  }
-   
-  
-    translate(0, height/3, 20);
-  
-  for(var i = 0; i<minute(); i++){
-      ringYmin[i]  += 0.2 * (minute() - i) * (minute()*5 - ringYmin[i]) / minute();
-      drawRing(ringXmin[i], ringYmin[i]+25, (R+2)*ringOrderMin[i], (S+2)*ringOrderMin[i], T+2);
-  }
-  
-  for(var i = minute()-1; i>= 0; i--){
-    drawRing(ringXmin[i], ringYmin[i]+25, (R+2) * ringOrderMin[i], -(S+2) * ringOrderMin[i], T+2);
-  }
-  
-    translate(0, height/3, 20);
+
+    translate(width/2, 320, 20);
     for(var i = 1; i<hour()%12; i++){
       ringYmin[i]  += 0.2 * (i - i) * (i*5 - ringYmin[i]) / i;
-      drawRing(ringXmin[i], ringYmin[i]+25, (R + 5)*ringOrderMin[i], (S+5)*ringOrderMin[i], T+5);
+      drawRing(ringXmin[i], ringYmin[i]+25, (R + 5)*ringOrderMin[i], (S+3)*ringOrderMin[i], T+3);
   }
-  
+
   for(var i = hour()%12-1; i>= 0; i--){
-    drawRing(ringXmin[i], ringYmin[i]+25, (R+5) * ringOrderMin[i], -(S+5) * ringOrderMin[i], T+5);
+    drawRing(ringXmin[i], ringYmin[i]+25, (R+5) * ringOrderMin[i], -(S+3) * ringOrderMin[i], T+3);
   }
-  
-  
+
+    translate(0, -height/4);
+
+
+  for(var i = 0; i<minute(); i++){
+      ringYmin[i]  += 0.2 * (minute() - i) * (minute()*5 - ringYmin[i]) / minute();
+      drawRing(ringXmin[i], ringYmin[i]+25, (R+2)*ringOrderMin[i], (S+1)*ringOrderMin[i], T+2);
+  }
+
+  for(var i = minute()-1; i>= 0; i--){
+    drawRing(ringXmin[i], ringYmin[i]+25, (R+2) * ringOrderMin[i], -(S+1) * ringOrderMin[i], T+2);
+  }
+
+      translate(0, -height/4, 20);
+
+    for (var i = 0; i < second(); i++) {
+      ringYsec[i] += 0.2 * (second() - i) * (second()*5 - ringYsec[i]) / second();
+      drawRing(ringXsec[i], ringYsec[i]+25, (R+1) * ringOrderSec[i], +S * ringOrderSec[i], T);
+  }
+
+    for (var i = second()-1; i >= 0; i--) {
+      drawRing(ringXsec[i], ringYsec[i]+25, (R+1) * ringOrderSec[i], -S * ringOrderSec[i], T);
+  }
+
+
+
   noFill();
-  
+
   translate(-width/2, 0)
-  
+
 
 }
 
