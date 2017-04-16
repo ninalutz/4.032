@@ -7,8 +7,18 @@ var world;
 var worldsplit;
 var country;
 var countrycomp;
+var dropdown;
 
 function setup() {
+  dropdown = createSelect();
+  dropdown.position(20, 65);
+  dropdown.option('name 1','value1');
+  dropdown.option('name 2','value2');
+  dropdown.option('name 3','value3');
+  dropdown.option('pear','pear');
+
+  dropdown.changed(mySelectEvent);
+
   createCanvas(960, 540);
   leftBorder = width/2;
   rightBorder = width- width/8;
@@ -180,6 +190,16 @@ noStroke();
   text("COUNTRY", leftBorder + (rightBorder-leftBorder)/2, -20);
   textAlign(LEFT);
   textSize(15);
+  if (dropdown.selected() === 'pear') {
+    ellipse(0, 0, 100, 100);
+  }
+}
 
 
+function mySelectEvent() {
+  var selected = this.selected();
+  if (selected === 'pear') {
+    thing = selected;
+    console.log("it's a pear!");
+  }
 }

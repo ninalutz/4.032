@@ -4,7 +4,7 @@ function Particle(x, y, mass, displayColor) {
   this.acc = new p5.Vector(0, 0);
   this.mass = mass;
   this.displayColor = displayColor;
-  this.fallRate = map(this.mass, 2, 5, 0.1, 0.05);
+  this.fallRate = map(this.mass, 1, 8, 0.1, 0.05);
 
   this.getBoundingBox = function() {
     var radius = this.mass/2;

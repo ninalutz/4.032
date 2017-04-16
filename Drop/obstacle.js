@@ -15,6 +15,8 @@ function Obstacle(x, y, mass, disColor) {
   }
 
   this.display = function() {
+    stroke(255);
+    strokeWeight(2);
     fill(this.disasterColor);
     ellipse(this.pos.x, this.pos.y, this.mass*0.95, this.mass*0.95);
   }
