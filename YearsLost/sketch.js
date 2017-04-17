@@ -6,7 +6,7 @@ var obstacles = [];
 var obstacles2 = [];
 var comp;
 var mil;
-var introtime = 18000;
+var introtime = 12000;
 
 var nameTable;
 var names;
@@ -138,14 +138,22 @@ function MasterList(){
   background(0);
   noStroke();
   fill(225);
-  textSize(20);
+  textSize(18);
   textAlign(CENTER);
   text("Now let's compare them in different countries. Select two to compare.", width/2, 30);
-  textSize(15);
   textAlign(LEFT);
+  var k = 0;
+  push();
+  textSize(12.5);
+  translate(30, 50);
   for(var i = 0; i<nameTable.getRowCount(); i++){
-    text(nameTable.getColumn("name")[i], 80*(int(i/22)), 20*(i+1));
+    text(nameTable.getColumn("name")[i], 105*(int(i/20)), 22*(k+1));
+    k++;
+    if(k >= 20){
+      k = 0;
+    }
   }
+  pop();
 }
 
 var thing1 = 100;
@@ -155,7 +163,7 @@ function Intro(){
   fill(225);
   textSize(20);
   textAlign(CENTER);
-  thing1+=3;
+  thing1+=5;
 
 
   if(thing1 < width){
