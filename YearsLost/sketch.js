@@ -1,4 +1,4 @@
-var spawnCount = 1;
+var spawnCount;
 var leftBorder, leftBorder2;
 var rightBorder, rightBorder2;
 var particles = [];
@@ -50,15 +50,21 @@ function setup() {
       obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
   }
   for(var i = 0; i<14; i++){
-    var HelCol = color(i*180, 0, 0);
-    var per = i*9;
-    var x = random(50, width-50);
-    var y = random(100, height-100);
+    var HelCol = color(255 - i*20, i*20, i*40);
+    var per = random(40, 100);
+    var x = random(100, width-100);
+    var y = random(150, height-50);
       obstacles2[obstacles2.length] = new Obstacle(x, y, per, HelCol);
   }
 }
 
 function draw() {
+  if(comp){
+    spawnCount = 1;
+  }
+  else{
+    spawnCount = 3;
+  }
   mil = millis();
   if(comp){
   CountryComp();
@@ -147,7 +153,7 @@ function Intro(){
   }
 }
 
-else if(thing1 > width-70 && thing1 < width+900){
+else if(thing1 > width-70 && thing1 < width+700){
   text("We all have these journeys, but some end early because of obstacles", width/2, 50);
 }
 
