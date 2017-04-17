@@ -3,8 +3,10 @@ var leftBorder, leftBorder2;
 var rightBorder, rightBorder2;
 var particles = [];
 var obstacles = [];
+var obstacles2 = [];
 var comp;
 var mil;
+var introtime = 21000;
 
 function setup() {
   createCanvas(960, 540);
@@ -14,45 +16,45 @@ function setup() {
   rightBorder2 = width/2-100;
 
   for(var i = 0; i<6; i++){
-  //  var HelCol = color(255, 124, 72);
     var HelCol = color(	244, 43, 38);
     if (i == 0){
-      //var HelCol = color(24, 132, 187);
       var size = 60;
       var y = height/2 + 50;
       var x = leftBorder + 200;
     }
     if(i == 1){
-      //var HelCol = color(244, 207, 38);
       var size = 20;
       var y = height/2 + 200;
       var x = rightBorder - 60;
     }
     if(i == 2){
-    //  var HelCol = color(	244, 43, 38);
       var size = 40;
       var y = height/2 + 100;
       var x = leftBorder + 50;
     }
     if (i == 3){
-    //  var HelCol = color(	124, 212, 51);
       var size = 60;
       var y = height/2 + 50;
       var x = leftBorder2 + 200;
     }
     if(i == 4){
-      // var HelCol = color(255, 124, 72);
       var size = 20;
       var y = height/2 + 200;
       var x = rightBorder2 - 60;
     }
     if(i == 5){
-      //var HelCol = color(159, 67, 270);
       var size = 40;
       var y = height/2 + 100;
       var x = leftBorder2 + 50;
     }
       obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
+  }
+  for(var i = 0; i<14; i++){
+    var HelCol = color(i*180, 0, 0);
+    var per = i*9;
+    var x = random(50, width-50);
+    var y = random(100, height-100);
+      obstacles2[obstacles2.length] = new Obstacle(x, y, per, HelCol);
   }
 }
 
@@ -64,10 +66,10 @@ function draw() {
   else{
     MasterList();
   }
-  if(mil < 5000){
+  if(mil < introtime){
     Intro();
   }
-  print(mil);
+
 
   }
 
@@ -92,7 +94,7 @@ function CountryComp(){
 
   for (var i = particles.length-1; i > -1; i--) {
     particles[i].move();
-    var has_Obstacle = particles[i].resolveobstacles();
+    var has_Obstacle = particles[i].resolveobstacles(obstacles);
     particles[i].display();
 
     if (particles[i].pos.y > height) {
@@ -106,7 +108,8 @@ function CountryComp(){
 
 
   for (var i = 0; i < obstacles.length; i++) {
-    obstacles[i].display();
+      noStroke();
+      obstacles[i].display();
   }
 
   noStroke();
@@ -123,43 +126,66 @@ function MasterList(){
   fill(225);
   textSize(20);
   textAlign(CENTER);
-  text("Countries with death delta > 5", width/2, 30);
+  text("Now let's compare them in different countries. Select two to compare.", width/2, 30);
 }
 
+var thing1 = 100;
 function Intro(){
-  print("INTROOOOOOO");
   background(0);
   noStroke();
   fill(225);
   textSize(20);
   textAlign(CENTER);
-  text("Think of life...", width/2, 30);
+  thing1+=3;
 
+  if(thing1 < width){
+    text("Life is a journey,", width/2, 30);
+    text("Birth", 100, 70);
+    text("Death", width-100, 70);
+    if(thing1 < width-100){
+    ellipse(thing1, 100, 20, 20);
+  }
+}
+
+else if(thing1 > width-70 && thing1 < width+900){
+  text("We all have these journeys, but some end early because of obstacles", width/2, 50);
+}
+
+else{
+  text("These are the greatest causes of premature death in the world", width/2, 50);
   for (var num = 0; num < spawnCount; num++) {
-    var x = random(leftBorder, rightBorder);
+    var x = random(50, width-50);
     var size = 4;
-    var newParticle = new Particle(x, 50, size, color(255));
+    var newParticle = new Particle(x, 100, size, color(255));
     particles[particles.length] = newParticle;
   }
 
+    for (var i = 0; i < obstacles2.length; i++) {
+        noStroke();
+        obstacles2[i].display();
+    }
+
   for (var i = particles.length-1; i > -1; i--) {
     particles[i].move();
-    //var has_Obstacle = particles[i].resolveobstacles();
+    var has_Obstacle = particles[i].resolveobstacles(obstacles2);
     particles[i].display();
 
     if (particles[i].pos.y > height) {
         particles.splice(i, 1);
       }
 
-    // if (has_Obstacle && particles[i].vel.mag() < 0.1) {
-    //     particles.splice(i, 1);
-    //   }
+    if (has_Obstacle && particles[i].vel.mag() < 0.1) {
+        particles.splice(i, 1);
+      }
   }
+}
+
 
 }
 
 function keyPressed(){
-  if (key == ' '){
+  if (key == ' ' && mil > introtime){
+    particles = [];
     comp = !comp;
   }
 }

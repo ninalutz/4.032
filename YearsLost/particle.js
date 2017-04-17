@@ -24,7 +24,7 @@ function Particle(x, y, mass, displayColor) {
     this.acc.mult(0);
   }
 
-  this.resolveobstacles = function() {
+  this.resolveobstacles = function(obstacles) {
     var hit_object = false;
     var bb1 = this.getBoundingBox();
 

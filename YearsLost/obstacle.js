@@ -15,7 +15,26 @@ function Obstacle(x, y, mass, disColor) {
   }
 
   this.display = function() {
-    fill(this.disasterColor);
+    if(comp){
+    if(this.pos.x > width/2){
+    fill(150, 50);
+    rectMode(CORNERS);
+    rect(width-20, this.pos.y, width/2+20, this.pos.y + 20);
+    fill(255);
+    textSize(12);
+    text("ages: ", width/2+50, this.pos.y + 15);
+  }
+  if(this.pos.x < width/2){
+    fill(150, 50);
+  rectMode(CORNERS);
+  rect(20, this.pos.y, width/2-20, this.pos.y + 20);
+  fill(255);
+  textSize(12);
+  text("ages: ", width/2-50, this.pos.y + 15);
+}
+}
+      fill(this.disasterColor);
+    noStroke()
     ellipse(this.pos.x, this.pos.y, this.mass*0.95, this.mass*0.95);
   }
 }
