@@ -6,10 +6,15 @@ var obstacles = [];
 var obstacles2 = [];
 var comp;
 var mil;
-var introtime = 21000;
+var introtime = 18000;
+
+var nameTable;
+var names;
 
 function setup() {
   createCanvas(960, 540);
+  nameTable = loadTable("data/countries.csv", "csv", "header");
+
   leftBorder = width/2 + 100;
   rightBorder = width - 20;
   leftBorder2 = 20;
@@ -63,7 +68,7 @@ function draw() {
     spawnCount = 1;
   }
   else{
-    spawnCount = 3;
+    spawnCount = 5;
   }
   mil = millis();
   if(comp){
@@ -103,7 +108,7 @@ function CountryComp(){
     var has_Obstacle = particles[i].resolveobstacles(obstacles);
     particles[i].display();
 
-    if (particles[i].pos.y > height) {
+    if (particles[i].pos.y > height - 30) {
         particles.splice(i, 1);
       }
 
@@ -124,6 +129,9 @@ function CountryComp(){
   textAlign(CENTER);
   text("COUNTRY", leftBorder + (rightBorder-leftBorder)/2, 30);
   text("COUNTRY", leftBorder2 + (rightBorder2-leftBorder2)/2, 30);
+  textSize(15);
+  text("Life expectancy: ", leftBorder + (rightBorder-leftBorder)/2, height-10);
+  text("Life expectancy: ", leftBorder2 + (rightBorder2-leftBorder2)/2, height-10);
 }
 
 function MasterList(){
@@ -133,6 +141,11 @@ function MasterList(){
   textSize(20);
   textAlign(CENTER);
   text("Now let's compare them in different countries. Select two to compare.", width/2, 30);
+  textSize(15);
+  textAlign(LEFT);
+  for(var i = 0; i<nameTable.getRowCount(); i++){
+    text(nameTable.getColumn("name")[i], 80*(int(i/22)), 20*(i+1));
+  }
 }
 
 var thing1 = 100;
@@ -144,21 +157,21 @@ function Intro(){
   textAlign(CENTER);
   thing1+=3;
 
+
   if(thing1 < width){
-    text("Life is a journey,", width/2, 30);
-    text("Birth", 100, 70);
-    text("Death", width-100, 70);
+    text("Life is a journey,", width/2, height/2 - 50);
+    text("Birth", 100, height/2);
+    text("Death", width-100, height/2 );
     if(thing1 < width-100){
-    ellipse(thing1, 100, 20, 20);
+    ellipse(thing1, height/2 + 30, 20, 20);
+    }
+  else{
+    ellipse(width-100, height/2 + 30, 20, 20);
   }
 }
 
-else if(thing1 > width-70 && thing1 < width+700){
-  text("We all have these journeys, but some end early because of obstacles", width/2, 50);
-}
-
 else{
-  text("These are the greatest causes of premature death in the world", width/2, 50);
+  text("We all have these journeys, but some end early because of obstacles.", width/2, 50);
   for (var num = 0; num < spawnCount; num++) {
     var x = random(50, width-50);
     var size = 4;
@@ -185,8 +198,6 @@ else{
       }
   }
 }
-
-
 }
 
 function keyPressed(){
