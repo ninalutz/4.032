@@ -1,0 +1,205 @@
+ISO,Top1Cause,Top1Per,Top2Cause,Top2Per,Top3Per,Top3Cause
+AFG,Heart Disease,0.28637698,Cerebrovascular,0.23600593,0.15472268,Accidents
+ALB,Heart Disease,0.35624766,Cerebrovascular,0.33301142,0.10460294,Accidents
+DZA,Cerebrovascular,0.3000971,Heart Disease,0.27674073,0.12637345,Diabetes
+AND,Heart Disease,0,Cerebrovascular,0,0,Accidents
+AGO,Accidents,0.137105,Cerebrovascular,0.11926692,0.115167096,Respiratory
+ATG,Heart Disease,0.30880544,Cerebrovascular,0.21530049,0.21222351,Diabetes
+ARG,Heart Disease,0.28695172,Accidents,0.16750327,0.16477914,Cerebrovascular
+ARM,Heart Disease,0.4655029,Cerebrovascular,0.18979385,0.10425605,Accidents
+AUS,Heart Disease,0.36176017,Accidents,0.15171647,0.14888726,Cerebrovascular
+AUT,Heart Disease,0.38856453,Accidents,0.15632133,0.14743195,Cerebrovascular
+AZE,Heart Disease,0.5161891,Cerebrovascular,0.2248702,0.0699487,Accidents
+BHS,AIDS/HIV,0.29583487,Heart Disease,0.1909699,0.18837784,Accidents
+BHR,Heart Disease,0.25848085,Diabetes,0.24122505,0.14189708,Accidents
+BGD,COPD,0.17034572,Accidents,0.16491294,0.15108833,Respiratory
+BRB,Heart Disease,0.23810852,Diabetes,0.20439583,0.20138346,Cerebrovascular
+BLR,Heart Disease,0.5325418,Cerebrovascular,0.18034992,0.16139452,Accidents
+BEL,Heart Disease,0.29257756,Accidents,0.18386891,0.14601997,Cerebrovascular
+BLZ,Heart Disease,0.2344741,Accidents,0.16293319,0.14038838,Diabetes
+BEN,Malaria,0.22967818,Respiratory,0.18393295,0.13359319,Cerebrovascular
+BTN,Accidents,0.26139867,Heart Disease,0.16466781,0.16276547,COPD
+BOL,Heart Disease,0.19837631,Respiratory,0.17767337,0.15872665,Cerebrovascular
+BIH,Heart Disease,0.34648082,Cerebrovascular,0.3304703,0.088164754,Accidents
+BWA,AIDS/HIV,0.40220964,Accidents,0.13055114,0.11504634,Cerebrovascular
+BRA,Heart Disease,0.23678526,Cerebrovascular,0.20454863,0.20086882,Accidents
+BRN,Heart Disease,0.26626128,Cerebrovascular,0.1857558,0.16080737,Diabetes
+BGR,Heart Disease,0.39993516,Cerebrovascular,0.32454762,0.07993595,Accidents
+BFA,Malaria,0.24530642,Respiratory,0.20461874,0.10860765,Cerebrovascular
+BDI,Malaria,0.14787532,Tuberculosis,0.12865804,0.12847884,Cerebrovascular
+KHM,Heart Disease,0.25457212,Cerebrovascular,0.2252725,0.13300566,Respiratory
+CMR,AIDS/HIV,0.18874691,Respiratory,0.1653911,0.14606254,Malaria
+CAN,Heart Disease,0.35070056,Lung Disease,0.14797464,0.14606695,Accidents
+CPV,Cerebrovascular,0.27804404,Accidents,0.16077709,0.14611533,Heart Disease
+CAF,AIDS/HIV,0.17794351,Diarrheal Diseases,0.14052887,0.11587718,Respiratory
+TCD,Respiratory,0.21844141,Diarrheal Diseases,0.16266201,0.10373283,Malaria
+CHL,Heart Disease,0.22636132,Accidents,0.21281885,0.1874722,Cerebrovascular
+CHN,Cerebrovascular,0.31825924,COPD,0.17893608,0.17530438,Heart Disease
+COL,Heart Disease,0.26907393,Accidents,0.23203169,0.1348757,Cerebrovascular
+COM,Cerebrovascular,0.19201018,Respiratory,0.16033131,0.15625359,Accidents
+COG,Cerebrovascular,0.13819867,Malaria,0.12360663,0.12348783,Accidents
+CRI,Heart Disease,0.32920492,Accidents,0.21331672,0.13904868,Cerebrovascular
+CIV,Malaria,0.17340377,Respiratory,0.16629887,0.13576221,AIDS/HIV
+HRV,Heart Disease,0.3889836,Cerebrovascular,0.25765783,0.120233044,Accidents
+CUB,Heart Disease,0.36107904,Cerebrovascular,0.187441,0.14077182,Accidents
+CYP,Heart Disease,0.38093016,Cerebrovascular,0.172296,0.13012181,Accidents
+CZE,Heart Disease,0.41532946,Cerebrovascular,0.2371802,0.12218763,Accidents
+PRK,Cerebrovascular,0.27089036,COPD,0.18037705,0.1586616,Heart Disease
+COD,Malaria,0.14323618,Diarrheal Diseases,0.1212688,0.118036166,Cerebrovascular
+DNK,Heart Disease,0.32079756,Cerebrovascular,0.16911061,0.13831885,Lung Disease
+DJI,Accidents,0.1625966,AIDS/HIV,0.16244534,0.14683881,Cerebrovascular
+DMA,Heart Disease,0.22344851,Cerebrovascular,0.21100903,0.18370038,Diabetes
+DOM,Heart Disease,0.35328734,Cerebrovascular,0.21646146,0.15077329,Accidents
+ECU,Accidents,0.24645378,Heart Disease,0.18999588,0.14062215,Cerebrovascular
+EGY,Heart Disease,0.43499038,Cerebrovascular,0.2819059,0.07741587,Accidents
+SLV,Accidents,0.33476564,Heart Disease,0.24614029,0.10506016,Respiratory
+GNQ,AIDS/HIV,0.18584959,Accidents,0.16566278,0.15076274,Malaria
+ERI,Respiratory,0.1572773,Cerebrovascular,0.14797972,0.13132955,Accidents
+EST,Heart Disease,0.46826118,Cerebrovascular,0.19010802,0.1357106,Accidents
+ETH,Respiratory,0.26417467,Accidents,0.13955835,0.107650936,Cerebrovascular
+FJI,Heart Disease,0.3361865,Diabetes,0.24914442,0.16999617,Cerebrovascular
+FIN,Heart Disease,0.41520542,Accidents,0.1878859,0.15355644,Cerebrovascular
+FRA,Heart Disease,0.25455552,Accidents,0.23954146,0.15066658,Lung Disease
+GAB,Accidents,0.17073052,AIDS/HIV,0.15607746,0.12857465,Malaria
+GMB,Respiratory,0.1899298,Malaria,0.17527965,0.14094007,Cerebrovascular
+GEO,Heart Disease,0.478263,Cerebrovascular,0.2919878,0.080074295,Accidents
+DEU,Heart Disease,0.40380743,Cerebrovascular,0.14457965,0.12632544,Accidents
+GHA,Cerebrovascular,0.17713703,Malaria,0.16216698,0.15788768,Respiratory
+GRC,Heart Disease,0.349008,Cerebrovascular,0.2702433,0.11578099,Lung Disease
+GRD,Heart Disease,0.27236772,Cerebrovascular,0.2328996,0.17937754,Diabetes
+GTM,Accidents,0.24122688,Respiratory,0.20631002,0.15634514,Heart Disease
+GIN,Respiratory,0.21264818,Malaria,0.19658054,0.12873456,Cerebrovascular
+GNB,Malaria,0.2132674,Respiratory,0.18089579,0.12213538,Cerebrovascular
+GUY,Heart Disease,0.26276216,Cerebrovascular,0.23124056,0.13839848,Diabetes
+HTI,Accidents,0.76249003,Cerebrovascular,0.08082159,0.039921336,Heart Disease
+HND,Heart Disease,0.2910367,Accidents,0.19471952,0.17089729,Cerebrovascular
+HUN,Heart Disease,0.4270898,Cerebrovascular,0.20828535,0.12602425,Accidents
+ISL,Heart Disease,0.39001745,Cerebrovascular,0.1432448,0.13193333,Lung Disease
+IND,Heart Disease,0.19818418,COPD,0.16839164,0.14332658,Accidents
+IDN,Cerebrovascular,0.33191547,Heart Disease,0.13780184,0.12666495,Tuberculosis
+IRN,Heart Disease,0.45368445,Accidents,0.19213812,0.18994628,Cerebrovascular
+IRQ,Heart Disease,0.37506458,Cerebrovascular,0.24703202,0.1529639,Accidents
+IRL,Heart Disease,0.3707806,Cerebrovascular,0.13468826,0.11493372,Accidents
+ISR,Heart Disease,0.3353617,Accidents,0.14231035,0.1414516,Cerebrovascular
+ITA,Heart Disease,0.32876292,Cerebrovascular,0.20548958,0.13553187,Lung Disease
+JAM,Cerebrovascular,0.27266806,Diabetes,0.1920448,0.18426047,Heart Disease
+JPN,Cerebrovascular,0.22744733,Accidents,0.1922809,0.18526825,Heart Disease
+JOR,Heart Disease,0.34913164,Cerebrovascular,0.24454992,0.14083855,Diabetes
+KAZ,Heart Disease,0.4321398,Cerebrovascular,0.21685947,0.14555992,Accidents
+KEN,AIDS/HIV,0.21106938,Respiratory,0.17797036,0.10532995,Cerebrovascular
+KIR,Cerebrovascular,0.21728048,Diabetes,0.21433476,0.14814351,Accidents
+KWT,Heart Disease,0.41535547,Cerebrovascular,0.20691426,0.121522926,Accidents
+KGZ,Heart Disease,0.40884823,Cerebrovascular,0.24710886,0.10344714,Accidents
+LAO,Heart Disease,0.21916653,Cerebrovascular,0.20298444,0.15959965,Respiratory
+LVA,Heart Disease,0.45317572,Cerebrovascular,0.24196799,0.14009187,Accidents
+LBN,Heart Disease,0.48753577,Cerebrovascular,0.15478706,0.1417907,Accidents
+LSO,AIDS/HIV,0.4067574,Accidents,0.12384489,0.09187286,Tuberculosis
+LBR,Malaria,0.19544409,Respiratory,0.17330748,0.101110466,Cerebrovascular
+LBY,Heart Disease,0.4009913,Cerebrovascular,0.24350369,0.11135171,Accidents
+LTU,Heart Disease,0.47438487,Accidents,0.19491825,0.16437736,Cerebrovascular
+LUX,Heart Disease,0.3345612,Cerebrovascular,0.1833442,0.15982,Accidents
+MKD,Cerebrovascular,0.43801615,Heart Disease,0.33906028,0.06198382,Accidents
+MDG,Cerebrovascular,0.24668755,Malaria,0.1368641,0.12701169,Heart Disease
+MWI,AIDS/HIV,0.30383793,Cerebrovascular,0.12786603,0.11741802,Respiratory
+MYS,Heart Disease,0.32596803,Cerebrovascular,0.17415638,0.13461778,Respiratory
+MDV,Heart Disease,0.26281193,Accidents,0.2562849,0.22445688,Cerebrovascular
+MLI,Malaria,0.26537508,Cerebrovascular,0.12538712,0.094628066,Heart Disease
+MLT,Heart Disease,0.4332367,Cerebrovascular,0.17465112,0.094636984,Lung Disease
+MHL,Diabetes,0,Cerebrovascular,0,0,Heart Disease
+MRT,Respiratory,0.21933046,Cerebrovascular,0.14926721,0.12525687,Accidents
+MUS,Heart Disease,0.3067766,Diabetes,0.22990681,0.19126703,Cerebrovascular
+MEX,Heart Disease,0.2575247,Accidents,0.19240353,0.17776938,Diabetes
+FSM,Cerebrovascular,0,Diabetes,0,0,Heart Disease
+MNG,Heart Disease,0.3903603,Cerebrovascular,0.2846854,0.1095079,Accidents
+MNE,Heart Disease,0.3661552,Cerebrovascular,0.33256122,0.118122846,Accidents
+MAR,Cerebrovascular,0.23836458,Diabetes,0.21726382,0.21671641,Heart Disease
+MOZ,AIDS/HIV,0.28177163,Malaria,0.17869374,0.13140224,Accidents
+MMR,Cerebrovascular,0.2097576,Respiratory,0.1333354,0.12307501,Accidents
+NAM,AIDS/HIV,0.24792539,Cerebrovascular,0.14428289,0.1154927,Accidents
+NPL,COPD,0.15490608,Heart Disease,0.15003507,0.13987605,Accidents
+NLD,Heart Disease,0.27886328,Lung Disease,0.17710881,0.1527979,Cerebrovascular
+NZL,Heart Disease,0.3642234,Accidents,0.1463058,0.14018628,Cerebrovascular
+NIC,Heart Disease,0.31507772,Cerebrovascular,0.18578151,0.1424228,Accidents
+NER,Respiratory,0.21179189,Malaria,0.15857741,0.14497915,Diarrheal Diseases
+NGA,Malaria,0.21035582,Respiratory,0.17795908,0.13988827,AIDS/HIV
+NOR,Heart Disease,0.32823187,Cerebrovascular,0.16052997,0.1410921,Accidents
+OMN,Heart Disease,0.2874969,Cerebrovascular,0.19147064,0.16929382,Diabetes
+PAK,Heart Disease,0.18971649,Accidents,0.17225754,0.1469315,Cerebrovascular
+PAN,Heart Disease,0.25088826,Cerebrovascular,0.19659553,0.16420129,Accidents
+PNG,Respiratory,0.34846848,Diabetes,0.13572913,0.13554457,Accidents
+PRY,Heart Disease,0.24214858,Cerebrovascular,0.24180748,0.151991,Accidents
+PER,Respiratory,0.2731128,Heart Disease,0.20160697,0.16581112,Accidents
+PHL,Heart Disease,0.26720783,Cerebrovascular,0.19331051,0.1747843,Respiratory
+POL,Heart Disease,0.3584382,Cerebrovascular,0.24901378,0.13513687,Accidents
+PRT,Cerebrovascular,0.2842883,Heart Disease,0.22515185,0.13922313,Accidents
+QAT,Heart Disease,0.35527351,Diabetes,0.25579607,0.1873307,Accidents
+KOR,Cerebrovascular,0.29329544,Accidents,0.20207682,0.13841754,Heart Disease
+MDA,Heart Disease,0.49871793,Cerebrovascular,0.20414613,0.11892135,Accidents
+ROU,Heart Disease,0.38148975,Cerebrovascular,0.33447906,0.09792434,Accidents
+RUS,Heart Disease,0.40951926,Cerebrovascular,0.23964283,0.16629781,Accidents
+RWA,Cerebrovascular,0.16544855,Malaria,0.1458583,0.14539936,Accidents
+LCA,Cerebrovascular,0.25613517,Diabetes,0.21831197,0.20225677,Heart Disease
+VCT,Heart Disease,0.29546285,Cerebrovascular,0.21341641,0.16809514,Diabetes
+WSM,Diabetes,0,Cerebrovascular,0,0,Accidents
+STP,Cerebrovascular,0.18497637,Malaria,0.18059516,0.1584828,Respiratory
+SAU,Heart Disease,0.33682555,Cerebrovascular,0.25747916,0.16013327,Accidents
+SEN,Respiratory,0.28010458,Malaria,0.18109542,0.113825396,Diarrheal Diseases
+SRB,Heart Disease,0.3507395,Cerebrovascular,0.34476832,0.09149726,Accidents
+SYC,Heart Disease,0.2793728,Accidents,0.18071142,0.16637897,Cerebrovascular
+SLE,Malaria,0.17929088,Respiratory,0.17163521,0.1255943,Cerebrovascular
+SGP,Heart Disease,0.32000348,Respiratory,0.21085256,0.16598366,Cerebrovascular
+SVK,Heart Disease,0.5152593,Cerebrovascular,0.1913706,0.097892985,Accidents
+SVN,Heart Disease,0.301717,Cerebrovascular,0.21252681,0.18904148,Accidents
+SLB,Cerebrovascular,0,Diabetes,0,0,Heart Disease
+SOM,Respiratory,0.16827106,Diarrheal Diseases,0.13574229,0.1294825,Accidents
+ZAF,AIDS/HIV,0.46723658,Accidents,0.09978369,0.08974352,Cerebrovascular
+ESP,Heart Disease,0.30653426,Cerebrovascular,0.18873246,0.13735859,Lung Disease
+LKA,Heart Disease,0.3081831,Accidents,0.21444249,0.1435211,Cerebrovascular
+SDN,Accidents,0.17208691,Respiratory,0.16645995,0.12112136,Cerebrovascular
+SUR,Cerebrovascular,0.27138537,Heart Disease,0.21171816,0.15254137,Accidents
+SWZ,AIDS/HIV,0.43088505,Accidents,0.10488645,0.08336912,Cerebrovascular
+SWE,Heart Disease,0.40182918,Cerebrovascular,0.1647623,0.14079264,Accidents
+CHE,Heart Disease,0.35689297,Accidents,0.17886294,0.14161965,Cerebrovascular
+SYR,Heart Disease,0.6054969,Cerebrovascular,0.23991574,0.047354043,Accidents
+TJK,Heart Disease,0.41948652,Cerebrovascular,0.25250846,0.08736207,Respiratory
+TZA,AIDS/HIV,0.2979612,Accidents,0.12071984,0.119584665,Malaria
+THA,Heart Disease,0.18827981,Accidents,0.18695147,0.14770624,Cerebrovascular
+TLS,Heart Disease,0,Cerebrovascular,0,0,Respiratory
+TGO,Malaria,0.1791538,Respiratory,0.17326383,0.12439867,Cerebrovascular
+TON,Diabetes,0,Heart Disease,0,0,Accidents
+TTO,Heart Disease,0.3015149,Diabetes,0.22057512,0.17039569,Cerebrovascular
+TUN,Heart Disease,0.36676562,Cerebrovascular,0.22241133,0.12615173,Accidents
+TUR,Heart Disease,0.38858616,Cerebrovascular,0.25890118,0.09878107,Lung Disease
+TKM,Heart Disease,0.53928375,Cerebrovascular,0.19408166,0.077268355,Accidents
+UGA,AIDS/HIV,0.21792144,Accidents,0.13501845,0.13078366,Malaria
+UKR,Heart Disease,0.51755685,Cerebrovascular,0.17996874,0.12197575,Accidents
+ARE,Heart Disease,0.41396305,Cerebrovascular,0.20504521,0.12281319,Accidents
+GBR,Heart Disease,0.34200767,Cerebrovascular,0.15971944,0.13486195,Lung Disease
+USA,Heart Disease,0.34867847,Accidents,0.17113578,0.122411914,Lung Disease
+URY,Heart Disease,0.25755236,Cerebrovascular,0.2269491,0.1589704,Accidents
+UZB,Heart Disease,0.5024816,Cerebrovascular,0.22710544,0.08277115,Accidents
+VUT,Cerebrovascular,0,Heart Disease,0,0,Diabetes
+VEN,Heart Disease,0.29488564,Accidents,0.24445537,0.1352594,Cerebrovascular
+VNM,Cerebrovascular,0.34828535,Accidents,0.16689152,0.108153686,Heart Disease
+YEM,Respiratory,0.41788277,Heart Disease,0.19210263,0.14854543,Cerebrovascular
+ZMB,AIDS/HIV,0.2514442,Accidents,0.14634015,0.12501793,Malaria
+ZWE,AIDS/HIV,0.33589795,Respiratory,0.124754444,0.106655546,Accidents
+HIA,Heart Disease,0.3337517,Cerebrovascular,0.18331495,0.14505559,Accidents
+LIA,Accidents,0.16459434,Respiratory,0.13375367,0.13204694,Cerebrovascular
+LMA,Heart Disease,0.18815994,Cerebrovascular,0.16510332,0.12742119,Accidents
+UMA,Heart Disease,0.28698057,Cerebrovascular,0.20237033,0.13669525,Accidents
+HIM,Heart Disease,0.35288307,Cerebrovascular,0.18511279,0.15868914,Accidents
+LIM,Respiratory,0.16807276,Cerebrovascular,0.15163156,0.1357962,Malaria
+LMM,Cerebrovascular,0.20913772,Heart Disease,0.20041361,0.16596894,Accidents
+UMM,Heart Disease,0.32158083,Cerebrovascular,0.25495026,0.15398254,Accidents
+HWW,Heart Disease,0.34615475,Cerebrovascular,0.18664819,0.16163844,Accidents
+LIW,Accidents,0.14664623,Respiratory,0.14188024,0.13316396,Cerebrovascular
+LMW,Heart Disease,0.19394001,Cerebrovascular,0.14976513,0.13416585,Accidents
+UMW,Cerebrovascular,0.2566045,Heart Disease,0.22109193,0.14785947,Accidents
+WLD,Heart Disease,0.21459785,Cerebrovascular,0.17870598,0.14965495,Accidents
+EAS,Cerebrovascular,0.298964,Heart Disease,0.16986077,0.14454618,COPD
+ECS,Heart Disease,0.4366571,Cerebrovascular,0.23989196,0.13081548,Accidents
+LCN,Accidents,0.26116452,Heart Disease,0.22883365,0.15669376,Cerebrovascular
+MEA,Heart Disease,0.3791287,Cerebrovascular,0.23417783,0.11574525,Accidents
+SAS,Heart Disease,0.19599329,COPD,0.15971552,0.14831768,Accidents
+SSF,AIDS/HIV,0.16268201,Respiratory,0.14932351,0.13369949,Malaria
