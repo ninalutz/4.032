@@ -12,8 +12,6 @@ var nameTable;
 var causesTable;
 var countriesTable;
 var colorsCauses = {};
-var names;
-var dict = {};
 
 function setup() {
   createCanvas(960, 540);
@@ -61,7 +59,7 @@ function setup() {
   }
   for(var i = 0; i<13; i++){
     var HelCol = color(255 - i*20, i*20, i*40);
-    colorsCauses[causesTable.getColumn("cause")[i]] = HelCol;
+    // colorsCauses[causes.getColumn("cause")[i]] = HelCol;
     var per = random(40, 100);
     var x = random(100, width-100);
     var y = random(150, height-50);
@@ -79,6 +77,7 @@ function draw() {
   mil = millis();
   if(comp){
   CountryComp();
+  print(colorsCauses);
   }
   else{
     MasterList();
@@ -173,6 +172,10 @@ function Intro(){
 
 
   if(thing1 < width){
+    for(var i = 0; i<13; i++){
+      var HelCol = color(255 - i*20, i*20, i*40);
+      colorsCauses[causesTable.getColumn("cause")[i]] = HelCol;
+    }
     text("Life is a journey,", width/2, height/2 - 50);
     text("Birth", 100, height/2);
     text("Death", width-100, height/2 );
@@ -185,13 +188,27 @@ function Intro(){
 }
 
 else{
-  text("We all have these journeys, but some end early because of obstacles.", width/2, 50);
+  text("We all have these journeys, but some end early because of obstacles.", width/2, 40);
   for (var num = 0; num < spawnCount; num++) {
     var x = random(50, width-50);
     var size = 4;
     var newParticle = new Particle(x, 100, size, color(255));
     particles[particles.length] = newParticle;
   }
+  var k = 0;
+  push();
+  translate(60, 45);
+  for(var i = 0; i<13; i++){
+    textSize(14);
+    textAlign(CENTER);
+    fill(colorsCauses[causesTable.getColumn("cause")[i]]);
+    text(causesTable.getColumn("cause")[i], (i+1)*60, 20*(k+1));
+    k++;
+    if(k >= 2){
+      k = 0;
+    }
+  }
+  pop();
 
     for (var i = 0; i < obstacles2.length; i++) {
         noStroke();
