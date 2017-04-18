@@ -9,17 +9,17 @@ var mil;
 var introtime = 10000;
 
 var nameTable;
+var causesTable;
+var countriesTable;
+var colorsCauses = {};
 var names;
 var dict = {};
 
 function setup() {
   createCanvas(960, 540);
 
-  dict["one"] = 1;
-  dict[1] = "one";
-
   nameTable = loadTable("data/countries.csv", "csv", "header");
-
+  causesTable = loadTable("data/causes.csv", "csv", "header");
   leftBorder = width/2 + 100;
   rightBorder = width - 20;
   leftBorder2 = 20;
@@ -59,12 +59,13 @@ function setup() {
     }
       obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
   }
-  for(var i = 0; i<14; i++){
+  for(var i = 0; i<13; i++){
     var HelCol = color(255 - i*20, i*20, i*40);
+    colorsCauses[causesTable.getColumn("cause")[i]] = HelCol;
     var per = random(40, 100);
     var x = random(100, width-100);
     var y = random(150, height-50);
-      obstacles2[obstacles2.length] = new Obstacle(x, y, per, HelCol);
+    obstacles2[obstacles2.length] = new Obstacle(x, y, per, HelCol);
   }
 }
 
