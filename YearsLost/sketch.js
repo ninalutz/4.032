@@ -7,17 +7,32 @@ var obstacles2 = [];
 var comp;
 var mil;
 var introtime = 10000;
+var made = false;
 
 var nameTable;
 var causesTable;
 var countriesTable;
 var colorsCauses = {};
 var mouseCountries = {};
+var labelAttrs = {};
 var selected = [];
+
+var backColor;
 
 var img;
 
+var LifeExp = {};
+var avgDeath = {};
+var avgDeathTable;
+var LifeExpTable;
+
+function preload(){
+  avgDeathTable = loadTable("data/AvgDeath.csv", "csv", "header");
+  LifeExpTable = loadTable("data/LE60TOIN.csv", "csv", "header");
+}
+
 function setup() {
+  backColor =  color(10);
   createCanvas(960, 540);
   img = loadImage("data/arrows.png");
 
@@ -28,43 +43,50 @@ function setup() {
   leftBorder2 = 20;
   rightBorder2 = width/2-100;
 
-  for(var i = 0; i<6; i++){
-    var HelCol = color(	244, 43, 38);
-    if (i == 0){
-      var size = 60;
-      var y = height/2 + 150;
-      var x = leftBorder + 200;
-    }
-    if(i == 1){
-      var size = 20;
-      var y = height/2 + 150;
-      var x = rightBorder - 60;
-    }
-    if(i == 2){
-      var size = 40;
-      var y = height/2 + 150;
-      var x = leftBorder + 50;
-    }
-    if (i == 3){
-      var size = 60;
-      var y = height/2 + 50;
-      var x = leftBorder2 + 200;
-    }
-    if(i == 4){
-      var size = 20;
-      var y = height/2 + 50;
-      var x = rightBorder2 - 60;
-    }
-    if(i == 5){
-      var size = 40;
-      var y = height/2 + 50;
-      var x = leftBorder2 + 50;
-    }
-      obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
+  for(var i = 0; i<avgDeathTable.getRowCount(); i++){
+    avgDeath[avgDeathTable.getColumn("ISO")[i]] = avgDeathTable.getColumn("Deaths")[i];
   }
+
+  for(var i = 0; i<LifeExpTable.getRowCount(); i++){
+    LifeExp[LifeExpTable.getColumn("ISO")[i]] = float(LifeExpTable.getColumn("2007")[i]) + 60;
+  }
+
+  // for(var i = 0; i<6; i++){
+  //   var HelCol = color(	244, 43, 38);
+  //   if (i == 0){
+  //     var size = 60;
+  //     var y = height/2 + 150;
+  //     var x = leftBorder + 200;
+  //   }
+  //   if(i == 1){
+  //     var size = 20;
+  //     var y = height/2 + 150;
+  //     var x = rightBorder - 60;
+  //   }
+  //   if(i == 2){
+  //     var size = 40;
+  //     var y = height/2 + 150;
+  //     var x = leftBorder + 50;
+  //   }
+  //   if (i == 3){
+  //     var size = 60;
+  //     var y = height/2 + 50;
+  //     var x = leftBorder2 + 200;
+  //   }
+  //   if(i == 4){
+  //     var size = 20;
+  //     var y = height/2 + 50;
+  //     var x = rightBorder2 - 60;
+  //   }
+  //   if(i == 5){
+  //     var size = 40;
+  //     var y = height/2 + 50;
+  //     var x = leftBorder2 + 50;
+  //   }
+  //     obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
+  // }
   for(var i = 0; i<13; i++){
     var HelCol = color(255 - i*20, i*20, i*40);
-    // colorsCauses[causes.getColumn("cause")[i]] = HelCol;
     var per = random(40, 100);
     var x = random(100, width-100);
     var y = random(150, height-50);
@@ -97,8 +119,14 @@ function draw() {
   }
 
 function CountryComp(){
-  background(0, 150);
+  background(backColor, 150);
   image(img, 5, 5, 30, 30);
+  if(!made){
+  makeCompObs();
+}
+  var meanage1 = map(int(avgDeath[labelAttrs[selected[0]]]),0,int(LifeExp[labelAttrs[selected[0]]]),50,height-30);
+  var meanage2 = map(int(avgDeath[labelAttrs[selected[1]]]),0,int(LifeExp[labelAttrs[selected[1]]]),50,height-30);
+
   for (var num = 0; num < spawnCount; num++) {
     var x = random(leftBorder, rightBorder);
     var size = 4;
@@ -140,17 +168,24 @@ function CountryComp(){
   fill(225);
   textSize(20);
   textAlign(CENTER);
-  text("COUNTRY", leftBorder + (rightBorder-leftBorder)/2, 30);
-  text("COUNTRY", leftBorder2 + (rightBorder2-leftBorder2)/2, 30);
+  text(selected[0], leftBorder + (rightBorder-leftBorder)/2, 30);
+  text(selected[1], leftBorder2 + (rightBorder2-leftBorder2)/2, 30);
   textSize(15);
-  text("Life expectancy: ", leftBorder + (rightBorder-leftBorder)/2, height-10);
-  text("Life expectancy: ", leftBorder2 + (rightBorder2-leftBorder2)/2, height-10);
+
+  fill(backColor);
+  //rect(leftBorder + (rightBorder-leftBorder)/2 - 90, meanage1 - 15, 180, 22);
+  //rect(leftBorder2 + (rightBorder2-leftBorder2)/2 - 90, meanage2 - 15, 180, 22);
+  fill(225);
+  text("Average Age of Death: " + int(avgDeath[labelAttrs[selected[0]]]), leftBorder + (rightBorder-leftBorder)/2, meanage1);
+  text("Average Age of Death: " + int(avgDeath[labelAttrs[selected[1]]]), leftBorder2 + (rightBorder2-leftBorder2)/2, meanage2);
+  text("Life expectancy: " + int(LifeExp[labelAttrs[selected[0]]]), leftBorder + (rightBorder-leftBorder)/2, height-10);
+  text("Life expectancy: " + int(LifeExp[labelAttrs[selected[1]]]), leftBorder2 + (rightBorder2-leftBorder2)/2, height-10);
 }
 
 var vecs = [];
 
 function MasterList(){
-  background(0);
+  background(backColor);
   noStroke();
   fill(225);
   textSize(18);
@@ -165,6 +200,7 @@ function MasterList(){
     text(nameTable.getColumn("name")[i], 105*(int(i/20)) + 30, 22*(k+1) + 50);
     vecs[i] = createVector(105*(int(i/20)) + 30 , 22*(k+1) + 50);
     mouseCountries[nameTable.getColumn("name")[i]] = vecs[i];
+    labelAttrs[nameTable.getColumn("name")[i]] = nameTable.getColumn("iso")[i];
     k++;
     if(k >= 20){
       k = 0;
@@ -172,7 +208,8 @@ function MasterList(){
   }
 
   for(var i = 0; i<selected.length; i++){
-    fill(255, 0, 0);
+    fill(244, 43, 38);
+    noStroke();
     text(selected[i], mouseCountries[selected[i]].x, mouseCountries[selected[i]].y);
   }
 
@@ -180,7 +217,7 @@ function MasterList(){
 
 var thing1 = 100;
 function Intro(){
-  background(0);
+  background(backColor);
   noStroke();
   fill(225);
   textSize(20);
@@ -250,14 +287,15 @@ else{
 
 
 function mousePressed(){
-
-
   if(!comp && mil > introtime){
     for(var i = 0; i<vecs.length; i++){
       if(abs(mouseX - vecs[i].x) < 30 && abs(mouseY - vecs[i].y) < 10){
         append(selected, nameTable.getColumn("name")[i]);
       }
     }
+    made = false;
+    obstacles = [];
+    particles = [];
   }
   else if (mil > introtime && comp && mouseX > 0 && mouseX < 30 && mouseY > 0 && mouseY < 30 ){
     comp = !comp;
@@ -265,4 +303,47 @@ function mousePressed(){
     print("THING");
   }
 
+}
+
+function makeCompObs(){
+  meanage1 = map(int(avgDeath[labelAttrs[selected[0]]]),0,int(LifeExp[labelAttrs[selected[0]]]),50,height-30);
+  meanage2 = map(int(avgDeath[labelAttrs[selected[1]]]),0,int(LifeExp[labelAttrs[selected[1]]]),50,height-30);
+
+  for(var i = 0; i<6; i++){
+    var HelCol = color(	244, 43, 38);
+
+
+    if (i == 0){
+      var size = 60;
+      var y = meanage1;
+      var x = leftBorder + 200;
+    }
+    if(i == 1){
+      var size = 20;
+      var y = meanage1;
+      var x = rightBorder - 60;
+    }
+    if(i == 2){
+      var size = 40;
+      var y = meanage1;
+      var x = leftBorder + 50;
+    }
+    if (i == 3){
+      var size = 60;
+      var y = meanage2;
+      var x = leftBorder2 + 200;
+    }
+    if(i == 4){
+      var size = 20;
+      var y = meanage2;
+      var x = rightBorder2 - 60;
+    }
+    if(i == 5){
+      var size = 40;
+      var y = meanage2;
+      var x = leftBorder2 + 50;
+    }
+      obstacles[obstacles.length] = new Obstacle(x, y - 50, size, HelCol);
+  }
+  made = true;
 }
