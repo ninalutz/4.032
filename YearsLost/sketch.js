@@ -12,9 +12,14 @@ var nameTable;
 var causesTable;
 var countriesTable;
 var colorsCauses = {};
+var mouseCountries = {};
+var selected = [];
+
+var img;
 
 function setup() {
   createCanvas(960, 540);
+  img = loadImage("data/arrows.png");
 
   nameTable = loadTable("data/countries.csv", "csv", "header");
   causesTable = loadTable("data/causes.csv", "csv", "header");
@@ -68,6 +73,9 @@ function setup() {
 }
 
 function draw() {
+  if (selected.length == 2){
+    comp = true;
+  }
   if(comp){
     spawnCount = 1;
   }
@@ -77,7 +85,6 @@ function draw() {
   mil = millis();
   if(comp){
   CountryComp();
-  print(colorsCauses);
   }
   else{
     MasterList();
@@ -91,6 +98,7 @@ function draw() {
 
 function CountryComp(){
   background(0, 150);
+  image(img, 5, 5, 30, 30);
   for (var num = 0; num < spawnCount; num++) {
     var x = random(leftBorder, rightBorder);
     var size = 4;
@@ -139,6 +147,8 @@ function CountryComp(){
   text("Life expectancy: ", leftBorder2 + (rightBorder2-leftBorder2)/2, height-10);
 }
 
+var vecs = [];
+
 function MasterList(){
   background(0);
   noStroke();
@@ -148,17 +158,24 @@ function MasterList(){
   text("Now let's compare them in different countries. Select two to compare.", width/2, 35);
   textAlign(LEFT);
   var k = 0;
-  push();
+
   textSize(12.5);
-  translate(30, 50);
+
   for(var i = 0; i<nameTable.getRowCount(); i++){
-    text(nameTable.getColumn("name")[i], 105*(int(i/20)), 22*(k+1));
+    text(nameTable.getColumn("name")[i], 105*(int(i/20)) + 30, 22*(k+1) + 50);
+    vecs[i] = createVector(105*(int(i/20)) + 30 , 22*(k+1) + 50);
+    mouseCountries[nameTable.getColumn("name")[i]] = vecs[i];
     k++;
     if(k >= 20){
       k = 0;
     }
   }
-  pop();
+
+  for(var i = 0; i<selected.length; i++){
+    fill(255, 0, 0);
+    text(selected[i], mouseCountries[selected[i]].x, mouseCountries[selected[i]].y);
+  }
+
 }
 
 var thing1 = 100;
@@ -231,9 +248,21 @@ else{
 }
 }
 
-function keyPressed(){
-  if (key == ' ' && mil > introtime){
-    particles = [];
-    comp = !comp;
+
+function mousePressed(){
+
+
+  if(!comp && mil > introtime){
+    for(var i = 0; i<vecs.length; i++){
+      if(abs(mouseX - vecs[i].x) < 30 && abs(mouseY - vecs[i].y) < 10){
+        append(selected, nameTable.getColumn("name")[i]);
+      }
+    }
   }
+  else if (mil > introtime && comp && mouseX > 0 && mouseX < 30 && mouseY > 0 && mouseY < 30 ){
+    comp = !comp;
+    selected = [];
+    print("THING");
+  }
+
 }
