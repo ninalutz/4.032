@@ -6,13 +6,18 @@ var obstacles = [];
 var obstacles2 = [];
 var comp;
 var mil;
-var introtime = 12000;
+var introtime = 10000;
 
 var nameTable;
 var names;
+var dict = {};
 
 function setup() {
   createCanvas(960, 540);
+
+  dict["one"] = 1;
+  dict[1] = "one";
+
   nameTable = loadTable("data/countries.csv", "csv", "header");
 
   leftBorder = width/2 + 100;
@@ -24,17 +29,17 @@ function setup() {
     var HelCol = color(	244, 43, 38);
     if (i == 0){
       var size = 60;
-      var y = height/2 + 50;
+      var y = height/2 + 150;
       var x = leftBorder + 200;
     }
     if(i == 1){
       var size = 20;
-      var y = height/2 + 200;
+      var y = height/2 + 150;
       var x = rightBorder - 60;
     }
     if(i == 2){
       var size = 40;
-      var y = height/2 + 100;
+      var y = height/2 + 150;
       var x = leftBorder + 50;
     }
     if (i == 3){
@@ -44,12 +49,12 @@ function setup() {
     }
     if(i == 4){
       var size = 20;
-      var y = height/2 + 200;
+      var y = height/2 + 50;
       var x = rightBorder2 - 60;
     }
     if(i == 5){
       var size = 40;
-      var y = height/2 + 100;
+      var y = height/2 + 50;
       var x = leftBorder2 + 50;
     }
       obstacles[obstacles.length] = new Obstacle(x, y, size, HelCol);
@@ -140,7 +145,7 @@ function MasterList(){
   fill(225);
   textSize(18);
   textAlign(CENTER);
-  text("Now let's compare them in different countries. Select two to compare.", width/2, 30);
+  text("Now let's compare them in different countries. Select two to compare.", width/2, 35);
   textAlign(LEFT);
   var k = 0;
   push();
