@@ -243,7 +243,7 @@ function Slide4(){
       strokeWeight(2);
       stroke(255);
      ellipse(546 + prep, 364, 100, 100);
-    prep+=2;
+    prep+=4;
   }
     // ellipse(546 + prep, 364, 100, 100);
   if(prep < 50){
