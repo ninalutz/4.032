@@ -1,36 +1,33 @@
 var cubit, mil;
 var switchtimes = [];
 var duration = 4000;
-var cube, cubeclosed, slide8, slide9, slide10, ORGate;
+var cube, arrow, arrow2;4
 
 function preload(){
   cube = loadImage("CubeOpen.png");
-  cubeclosed = loadImage("CubeClosed.png");
-  slide8 = loadImage("Slide8.jpg");
-  slide9 = loadImage("Slide9.jpg");
-  slide10 = loadImage("Slide10.jpg");
-  ORGate = loadImage("gate.png")
+  arrow = loadImage("arrow.png");
+  arrow2 = loadImage("arrow2.png");
 }
 
 function setup() {
-  createCanvas(displayWidth - 200, displayHeight -200);
+  textFont("Roboto");
+  createCanvas(1888, 1021);
+  //createCanvas(windowWidth, windowHeight);
   initSwitches();
   initWaves();
   var color1 = color(255, 0, 0);
   var color2 = color(0, 0, 255);
-  // initBalls(width/2 - 20, height, 50, 10, balls1, .9, color1, 80);
-  // initBalls(width - 100, height, 50, width/2 + 20, balls2, .05, color2, 40);
   switchtimes[0] = true;
 }
 var switchthing = 0;
 function initSwitches(){
-  for(var i = 0; i<11; i++){
+  for(var i = 0; i<10; i++){
     switchtimes[i] = false
   }
 }
 
 function draw() {
-
+  // scale(.8);
   mil = millis();
 
   textAlign(LEFT);
@@ -62,27 +59,27 @@ function draw() {
   }
   if(switchtimes[5]){
     background(27, 28, 30);
-    Slide5();
-  }
-  if(switchtimes[6]){
-    background(27, 28, 30);
     Slide6();
   }
-  if(switchtimes[7]){
+  if(switchtimes[6]){
     // background(27, 28, 30);
     Slide7();
   }
-  if(switchtimes[8]){
+  if(switchtimes[7]){
     background(27, 28, 30);
     Slide8();
   }
-  if(switchtimes[9]){
+  if(switchtimes[8]){
     background(27, 28, 30);
     Slide9();
   }
-  if(switchtimes[10]){
+  if(switchtimes[9]){
     background(27, 28, 30);
     Slide10();
   }
 
+  image(arrow, width-100, 50, 50, 50);
+  if(switchthing > 0){
+  image(arrow2, 50, 50, 50, 50);
+}
 }
