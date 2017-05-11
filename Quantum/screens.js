@@ -1,23 +1,72 @@
 function Intro(){
-  // background(50, 50, 60);
+  Slide11();
+
+}
+
+var movers = [];
+function Slide1(){
+  for (var i = 0; i < movers.length; i++) {
+      // Gravity is scaled by mass here!
+      var gravity = createVector(0, 0.05*movers[i].mass);
+      // Apply gravity
+      movers[i].applyForce(gravity);
+
+      // Update and display
+      movers[i].update();
+      movers[i].display();
+      movers[i].checkEdges();
+}
   fill(255);
-  text("Press space bar to go through the project.", 100, 70);
+  noStroke();
   text("In classical physical a particle has mass, position, and velocity.", 100, 100);
 
-  ellipse(width/2, height/2, 100, 100);
 }
-var thingy = 0;
-var thingx = 0;
-function Slide1(){
-  noStroke();
-  fill(255, 0, 0);
-  ellipse(width/3 + thingx, 0 + thingy, 100, 100);
-  fill(255);
 
-  text("And while these change, we can still measure and know all of them at once.", 100, 100);
-  thingx += 3;
-  thingy += 3;
+function reset(){
+  for (var i = 0; i < 15; i++) {
+    movers[i] = new Mover(random(0.5, 4), 110+i*70, 100);
+  }
 }
+
+function Mover(m,x,y) {
+  this.mass = m;
+  this.position = createVector(x,y);
+  this.velocity = createVector(0,0);
+  this.acceleration = createVector(0,0);
+}
+
+// Newton's 2nd law: F = M * A
+// or A = F / M
+Mover.prototype.applyForce = function(force) {
+  var f = p5.Vector.div(force,this.mass);
+  this.acceleration.add(f);
+};
+
+Mover.prototype.update = function() {
+  // Velocity changes according to acceleration
+  this.velocity.add(this.acceleration);
+  // position changes by velocity
+  this.position.add(this.velocity);
+  // We must clear acceleration each frame
+  this.acceleration.mult(0);
+};
+
+Mover.prototype.display = function() {
+  stroke(255);
+  strokeWeight(1);
+  fill(100);
+  ellipse(this.position.x,this.position.y,this.mass*16,this.mass*16);
+};
+
+// Bounce off bottom of window
+Mover.prototype.checkEdges = function() {
+  if (this.position.y > (height - this.mass*8)) {
+    // A little dampening when hitting the bottom
+    this.velocity.y *= -0.9;
+    this.position.y = (height - this.mass*8);
+  }
+};
+
 
 //All the things for quantum
 function Slide2(){
@@ -78,7 +127,7 @@ function Slide2(){
   fill(255);
   textAlign(LEFT);
   text("Quantum is totally different.", width/2 + 50, height/3);
-  text("A particle's mass, velocity, position, and state are uncertain.", width/2 + 50, height/3 + 100);
+  text("A particle's mass, velocity, position, and state are uncertain.\n A particle can be in any state at any time or multiple states at the same time.", width/2 + 50, height/3 + 100);
 }
 var Nmax = 400;
 var M = 50;
@@ -111,27 +160,62 @@ function Slide3(){
   drawQubit(400);
 }
 
-function drawQubit(rad){
+function drawQubitEn(rad){
   blendMode(ADD);
-  [0,1,2,3,4,5].forEach((i)=>{
+  for(var i = 0; i < 6; i++){
     var p = Math.cos((frameCount+i/6)/10);
+    var n = Math.cos((frameCount+i/6)/10);
     if(p<0){
-      fill(0, 0, 255,255/6);
+      // fill(0, 0, 255,200/6);
+      fill(lerpColor(color(255, 0, 0,200/6),color(0, 0, 255,200/6), p/-2));
     }
     else{
-      fill(255, 0, 0,255/6);
+      fill(lerpColor(color(255, 0, 0,200/6),color(0, 0, 255,200/6), p));
     }
       noStroke();
       ellipse(width/2, height/2 + 50 ,max(abs(p*rad),5),rad);
 
       noFill();
-      stroke(100,255/6);
-      strokeWeight(10);
-      ellipse(width/2, height/2 + 50 ,max(abs(p*rad),5)+10,rad+10);
+      stroke(225,255/6);
+      strokeWeight(1);
+      ellipse(width/2, height/2 + 50 ,max(abs(p*rad),5)+3,rad+3);
+
+      strokeWeight(1);
+      stroke(255);
+      ellipse(width/2, height/2 + 50 ,max(abs(n*rad),5)+5,rad+5);
 
       noStroke();
       fill(255);
-  })
+  }
+  blendMode(BLEND);
+}
+
+function drawQubit(rad){
+  blendMode(ADD);
+  for(var i = 0; i < 6; i++){
+    var p = Math.cos((frameCount+i/6)/10);
+    var n = Math.cos((frameCount+i/6)/10);
+    if(p<0){
+      fill(0, 0, 255,200/6);
+    }
+    else{
+      fill(255, 0, 0,200/6);
+    }
+      noStroke();
+      ellipse(width/2, height/2 + 50 ,max(abs(p*rad),5),rad);
+
+      noFill();
+      stroke(225,255/6);
+      strokeWeight(1);
+      ellipse(width/2, height/2 + 50 ,max(abs(p*rad),5)+3,rad+3);
+
+      strokeWeight(1);
+      stroke(255);
+      ellipse(width/2, height/2 + 50 ,max(abs(n*rad),5)+5,rad+5);
+
+      noStroke();
+      fill(255);
+  }
   blendMode(BLEND);
 }
 function Slide4(){
@@ -139,8 +223,8 @@ function Slide4(){
   var cubheight = 150;
 
   image(cube, width/4, 100, 500, 500);
-  stroke(100);
-  strokeWeight(6);
+  stroke(225);
+  strokeWeight(2);
   fill(255, 0, 0);
   ellipse(546, 366, 100, 100);
   fill(255);
@@ -154,13 +238,13 @@ var topDoor = false;
 var num = false;
 function Slide5(){
   textAlign(LEFT);
-    image(cubeclosed, width/4, 200, 400, 400);
-    fill(255);
+  image(cubeclosed, width/4, 200, 400, 400);
+  fill(255);
   text("But depending on how you access them, the states vary.", 100, 100);
   text("Your qubit started in a red state, click the left and right sides and see what state it turns into.", 100, 140);
   text("Click this side to find out more!", 498 - 120 ,276);
-  stroke(100);
-  strokeWeight(6);
+  stroke(225);
+  strokeWeight(2);
 
   if(rightDoor){
     fill(255, 0, 0);
@@ -180,7 +264,7 @@ function Slide5(){
   if(topDoor){
     text("When you observe the qubit in the right door, \nit's always red.", 750, 250);
     text("But in the left door, 50% of the time it's red, \n50% of the time it's blue.", 750, 330);
-    text("This is becuase of the uncertainty in quantum. \nStates are probabilities.", 750, 410);
+    text("This is becuase of the uncertainty in quantum.\nThe qubit can be both red and blue at the same time,\nbut we can only observe one of these states based on a probability.", 750, 410);
     push();
     translate(350, 160);
     drawQubit(180);
@@ -202,49 +286,214 @@ function Slide7(){
   fill(255);
   textAlign(CENTER);
   textSize(30);
+  drawCircuit();
+  fill(255);
+  noStroke();
   text("Computers rely on performing lots of simple logic to complete complex tasks.", width/2, height/2-20);
-  text("Logic is done by gates, which are electronics that perform logic inside a computer.", width/2, height/2 + 40);
+  text("Logic is done in digital circuits where electricity goes through thousands of small logic gates.", width/2, height/2 + 40);
   textSize(20);
   textAlign(LEFT);
-}
+ }
+// var A1 = 400;
+// var B1 = .1;
+// var rad = 20;
+// function Slide8(){
+//   fill(255);
+//   text("This is a OR gate.", 100, 100);
+//   text("Its inputs are high and low electric signals, which we represent with 1s and 0s.", 100, 130);
+//   text("The OR gate determines if either A or B is equal to 1, and returns 1 if yes, 0 if no.", 100, 160);
+//   push();
+//   translate(-270, 0);
+//   stroke(225);
+//   strokeWeight(4.2);
+//   line(400, 360, 432, 360);
+//   line(400, 409, 432, 409);
+//   line(644, 384, 660, 384);
+//   image(ORGate, 400, 300);
+//   strokeWeight(1);
+//   if(A1 < 680){
+//   A1+=1;
+// }
+//   if(A1 < 475){
+//   B1+=.2;
+//   fill(255, 0, 0);
+//   ellipse(A1, 410 - B1, 20, 20);
+//   fill(0, 0, 255);
+//   ellipse(A1, 360 + B1, 20, 20);
+// }
+//   else if(A1 < 600){
+//     if(A1 < 540){
+//     rad+=.5;
+//     }
+//     else{
+//       rad-=.55;
+//     }
+//     fill(200, 0, 255);
+//     ellipse(A1, 384, rad, rad);
+//   }
+//   else{
+//     fill(255, 0, 0);
+//     ellipse(A1, 384, 20, 20);
+//     if(A1 > 675){
+//     A1 = 400;
+//     B1 = .1;
+//   }
+//   }
+//   noFill();
+//   noStroke();
+//   pop();
+//   textSize(30);
+//   text("A", width/2 + 100, 300);
+//   text("B", width/2 + 150, 300);
+//   text("Output", width/2 + 200, 300);
+//   fill(255, 0, 0);
+//   text("1", width/2 + 100, 350);
+//   text("1", width/2 + 235, 350);
+//   fill(0, 0, 255);
+//   text("0", width/2 + 150, 350);
+//   fill(0, 0, 255);
+//   text("0", width/2 + 100, 400);
+//   text("0", width/2 + 235, 400);
+//   fill(0, 0, 255);
+//   text("0", width/2 + 150, 400);
+//   fill(255);
+// }
 
+// function Slide9(){
+//   text("This is what information would look like in a digital circuit", 100, 100);
+//   text("Information flows through the circuit, going through gates along the way.", 100, 130);
+// //  image(slide9, 100, 200, width-200, height - 200);
+// }
+var A1 = 0;
+var B1 = 0;
+var C1 = 10;
+var D1 = 10;
+var E1 = -15;
+var goingdown = true;
+var goingup = false;
+var goingdownA = false;
+var goingupA = true;
+var goingdownC = false;
+var goingupC = true;
+var goingdownD = false;
+var goingupD = true;
+var goingdownE = false;
+var goingupE = true;
 function Slide8(){
-  fill(255);
-  text("This is a OR gate.", 100, 100);
-  text("Its inputs are high and low electric signals, which we represent with 1s and 0s", 100, 130);
-  text("The OR gate determines if either A or B is equal to 1, and returns 1 if yes, 0 if no", 100, 160);
-  text("Didn't have time to code this up. Here's a sketch. It's basically animated circles going through gates.", 100, 190);
-  image(slide8, 100, 200, width-200, height - 200);
+  text("Information goes through quantum circuits differently.\nThe circuit is simpler and smaller becuase the qubits can hold multiple states and be in the same state at once..", 100, 100);
+  push();
+  translate(-100, B1);
+  if(goingdown){
+    B1 += 1;
+  }
+  else if (goingup){
+    B1 -= 1;
+  }
+
+  if(B1 == 100){
+    goingup = !goingup;
+    goingdown = !goingdown;
+  }
+
+  if(B1 == -170){
+    goingup = !goingup;
+    goingdown = !goingdown;
+  }
+  drawQubit(100);
+  pop();
+
+  push();
+  translate(20, C1);
+  if(goingdownC){
+    C1 += 4;
+  }
+  else if (goingupC){
+    C1 -= 2;
+  }
+
+  if(C1 == 50){
+    goingupC = !goingupC;
+    goingdownC = !goingdownC;
+  }
+
+  if(C1 == -190){
+    goingupC = !goingupC;
+    goingdownC = !goingdownC;
+  }
+  drawQubit(100);
+  pop();
+
+  push();
+  translate(275, D1);
+  if(goingdownD){
+    D1 += 2;
+  }
+  else if (goingupD){
+    D1 -= 10;
+  }
+
+  if(D1 == 250){
+    goingupD = !goingupD;
+    goingdownD = !goingdownD;
+  }
+
+  if(D1 == -100){
+    goingupD = !goingupD;
+    goingdownD = !goingdownD;
+  }
+  drawQubit(100);
+  pop();
+
+  push();
+  translate(-400, A1);
+  if(goingdownA){
+    A1 += 1;
+  }
+  else if (goingupA){
+    A1 -= 1;
+  }
+
+  if(A1 == 200){
+    goingupA = !goingupA;
+    goingdownA = !goingdownA;
+  }
+
+  if(A1 == -190){
+    goingupA = !goingupA;
+    goingdownA = !goingdownA;
+  }
+  drawQubitEn(100);
+  pop();
 }
 
 function Slide9(){
-  text("This is what a simple expression x = 7 + 8 would look like in a digital circuit", 100, 100);
-  text("Didn't have time to code this up. Here's a sketch. It's basically animated circles going through gates.", 100, 130);
-  image(slide9, 100, 200, width-200, height - 200);
+  // push();
+  // translate(-200, 0);
+  // drawQubit(200);
+  // pop();
+  // push();
+  // translate(200, 0);
+  // drawQubit(200);
+  // pop();
+  drawEntangle();
+  noStroke();
+  fill(255);
+  text("Qubits can also be entangled with one another. Meaning that they can be linked at any distance. \nIf you modify one, the other is also instantly modified. \nThis is one of the many ways we can hold more data and minimize logic in quantum computers.", 100, 100);
 }
 
-function Slide10(){
-  text("This is what it would look like on a quantum circuit.\n You need less qubits than gates because they can be in multiple states at once.", 100, 100);
-  text("Didn't have time to code this up. Here's a sketch. It's basically animated circles going through gates.", 100, 160);
-  image(slide10, 100, 200, width-200, height - 200);
-}
-
-function Slide11(){
+function drawEntangle(){
   push();
   translate(-200, 0);
-  drawQubit(200);
+  drawQubitEn(200);
   pop();
   push();
   translate(200, 0);
-  drawQubit(200);
+  drawQubitEn(200);
   pop();
-  noStroke();
-  fill(255);
-  text("Qubits can also be entangled with one another. Meaning that they can be linked at any distance. \nIf you modify one, the other is also instantly modified. \nThis is one of the many ways we can cut repeated logic in quantum computing.", 100, 100);
 }
 
-function Slide12(){
-  fill(0, 50);
+function Slide10(){
+  fill(27, 28, 30, 50);
   noStroke();
   rect(0,0,width,height);
   doBalls(balls1, balls1num);
@@ -260,7 +509,7 @@ function Slide12(){
   text("Qubits cut down on logic and bits to express information.\nCode finishes execution millions of times faster\nand is more efficient with data.", 50, 100);
 }
 
-function Slide13(){
+function Slide11(){
   var redAmnt = 150;
   var blueAmnt = 0;
   var greenAmnt = 0;
@@ -317,9 +566,7 @@ function Slide13(){
      V[N] = V[N] + dV[N] ; dV[N] = dV[N] * H ;
 
   }
-  fill(0, 70);
-  noStroke();
-    // rect(0, 0, width, height);
+
   noStroke();
   fill(255);
     textSize(30);
@@ -341,17 +588,52 @@ function disturbance(){
 
 var balls1num = 30;
 var balls2num = 60;
+var vec1, vec2;
+function initElec(){
+  vec1 = createVector(random(width), random(height));
+  vec2 = createVector(1, 1);
+  guide = new photon(vec1, vec2);
+  guide.col = color(255);
+  guide.vel.mult(1.5);
+  guide.radius = 10;
+
+  for(var i = 0; i<n; i++){
+
+    var dir = createVector(1, 0);
+    dir.rotate(i * (float(PI/4)));
+    var vec3 = createVector(width/2, height/2)
+    var t = new photon(vec3, dir);
+    t.col = color(58, 196, 88);
+    t.focus = createVector(width,height);
+    t.radius = 1 + random(1);
+    // t.orbit = false;
+  //  t.visible = 1 == (i & 1);
+    t.focus = guide.pos;
+    //t.vel.mult(0.5+random(1));
+    p.push(t);
+  }
+}
 function keyPressed(){
+  reset();
+
+  if (key != ' '){
+    console.log(mouseX, mouseY);
+  }
   if (key == ' '){
     switchthing += 1;
 
-  if(switchthing == 12){
+  if(switchthing == 10){
     var color1 = color(255, 0, 0);
     var color2 = color(0, 0, 255);
       initBalls(width/2 - 20, height, 50, 10, balls1, .5, color1, balls1num);
       initBalls(width/2 - 20, height, 50, 10, balls2, .05, color2, balls2num);
     }
-    if(switchthing > 13){
+    if(switchthing == 7){
+      fill(27, 28, 30);
+      rect(0, 0, width, height);
+      initElec();
+    }
+    if(switchthing > 10){
       switchthing = 0;
     }
     initSwitches();
@@ -447,8 +729,10 @@ Ball.prototype.move = function(){
 }
 
 Ball.prototype.display= function(){
-  fill(this.color);
-  stroke(20)
+  fill(red(this.color), green(this.color), blue(this.color), map(this.position.y,0,height,255,100));
+  stroke(255, map(this.position.y,0,height,20,255));
+  // strokeWeight(1);
+  noStroke();
   ellipse(this.position.x, this.position.y, this.radius * 2, this.radius * 2);
 }
 
@@ -495,9 +779,94 @@ function bounceBalls(ballA, ballB){
     ballB.velocity.y -= a.y / ballB.mass;
 
     strokeWeight(3*ballA.radius/maxRadius);
-    stroke(ballB.color, 20);
+    // stroke(ballB.color, 20);
+    stroke(80, 80, 80, map(ballA.position.y,0,height, 200,10));
     line(ballA.position.x, ballA.position.y, ballB.position.x, ballB.position.y);
 
   }
   noStroke();
+}
+
+var n = 70;
+var guide;
+var p = [];
+function drawCircuit(){
+  fill(27, 28, 30, 10);
+  rect(0, 0, width, height);
+  for(var i = 0; i< n; i++){
+    var t = p[i];
+    t.display();
+    t.update();
+  }
+}
+
+
+var photon = function(pos, dir){
+  this.c = 8;
+  this.radius = 1;
+  this.old = pos;
+  this.pos = pos;
+  dir.normalize();
+  dir.mult(this.c);
+  this.vel = dir;
+  this.col;
+  this.focus;
+  this.visible = true;
+  this.countr = 0;
+  this.countl = 0;
+  this.countmin = 5;
+  this.oneHit = false;
+
+  this.update = function(){
+    this.countr+=1;
+    this.countl+=1;
+
+    if(this.pos.x < this.radius){
+      this.pos.x = this.radius;
+      this.vel.x *= -1;
+      this.visible = !(this.visible | this.oneHit);
+    }
+   if(this.pos.x > width-this.radius){
+      this.pos.x = width - this.radius;
+      this.vel.x *= -1;
+      this.visible = !(this.visible | this.oneHit);
+    }
+
+  if(this.pos.y < this.radius){
+    this.pos.y = this.radius;
+    this.vel.y*=-1;
+    this.visible = !(this.visible | this.oneHit);
+  }
+    if(this.pos.y > height - this.radius){
+    this.pos.y = height - this.radius;
+    this.vel.y*=-1;
+    this.visible = !(this.visible | this.oneHit);
+  }
+
+  this.rnd = random(0, 1);
+
+  if (this.rnd < 0.04 && this.countl > this.countmin) {
+    this.vel.rotate(float(PI/4));
+    this.countl = 0;
+  }
+  else if (this.rnd < 0.08 && this.countr > this.countmin) {
+    this.vel.rotate(-(float(PI/4)));
+    this.countr = 0;
+  }
+    this.old = createVector(pos.x,pos.y);
+    this.pos.add(this.vel);
+
+  }
+
+  this.display = function(){
+    if(this.visible){
+      stroke(this.col);
+      strokeWeight(this.radius*2);
+      fill(this.col);
+      line(this.old.x, this.old.y, this.pos.x, this.pos.y);
+      noStroke();
+      ellipse(this.pos.x, this.pos.y, this.radius*2, this.radius*2);
+    }
+  }
+
 }
