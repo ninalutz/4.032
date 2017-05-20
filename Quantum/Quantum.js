@@ -11,7 +11,8 @@ function preload(){
 
 function setup() {
   textFont("Roboto");
-  createCanvas(1888, 1021);
+   createCanvas(1888, 1021);
+  //createCanvas(windowWidth, windowHeight);
   //createCanvas(windowWidth, windowHeight);
   initSwitches();
   initWaves();
@@ -29,7 +30,6 @@ function initSwitches(){
 function draw() {
   // scale(.8);
   mil = millis();
-
   textAlign(LEFT);
   textSize(20);
   translate(width/2);
